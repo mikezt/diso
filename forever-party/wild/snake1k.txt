@@ -1,0 +1,90 @@
+===============================================================================
+                         SNAKE 1K
+                   ZX Spectrum 48K/128K
+                       Forever 2026
+===============================================================================
+
+                    by Shrek/MB Maniax
+
+
+ABOUT
+-----
+Snake 1K is a classic snake game squeezed into just 1024 bytes of machine code.
+Created for the Forever 2026 demoparty 1KB game competition.
+
+
+CONTROLS
+--------
+Q - Up
+A - Down
+O - Left
+P - Right
+
+SPACE - Start game (in menu)
+
+
+GAMEPLAY
+--------
+Guide the snake to eat food (red squares) and grow longer. Avoid hitting the
+walls or your own tail. The game speeds up as you eat more food. Try to beat
+your high score!
+
+
+FEATURES
+--------
+- Classic snake gameplay
+- AY-3-8912 sound effects
+- High score tracking (per session)
+- Countdown before game starts
+- Progressive difficulty (speed increases)
+
+
+TECHNICAL NOTES
+---------------
+Fitting a complete game with menu, graphics, sound, score display, collision
+detection and gameplay into 1024 bytes was quite a challenge!
+
+Key optimizations used:
+- Attribute-only arena (no pixel graphics for borders)
+- Shared subroutines (screen address calculation, AY routines)
+- ROM font for text display (characters at $3C00)
+- 3-digit score (max 999 points)
+- Compact LDDR for snake body shifting
+- Minimal text strings
+- Combined keyboard port reads
+
+
+SYSTEM REQUIREMENTS
+-------------------
+- ZX Spectrum 48K or 128K
+- AY sound chip recommended (128K or 48K with AY interface)
+
+
+FILES
+-----
+snake1k.asm    - Source code (ASW assembler format)
+snake1k.tap    - Tape image ready to load
+
+
+LOADING
+-------
+LOAD ""
+
+Or use your favorite emulator (Fuse, ZX Spin, Spectaculator, etc.)
+
+
+HISTORY
+-------
+v1.0 - Forever 2026 release
+     - Final size: 1024 bytes exactly!
+
+
+GREETINGS
+---------
+Forever party organizers, all demosceners keeping the 8-bit spirit alive,
+and everyone who still loves the ZX Spectrum!
+
+
+===============================================================================
+                    MB Maniax 2026 - Keep the speccy alive!
+===============================================================================

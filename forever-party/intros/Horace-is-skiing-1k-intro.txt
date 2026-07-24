@@ -1,0 +1,21 @@
+::::::::::::::::::::::
+:: Horace is skiing ::
+::::::::::::::::::::::
+
+      1k intro
+
+Made by: Busy Noro Omega
+Release: 14.03.2026 on Forever party
+
+This intro was inspired by combination of
+
+ - Forever 2026 theme: "8-bit winter games"
+ - Classic old game "Horace goes skiing"
+
+So decided to take the large Horace character
+from the game's loading screen and make him move like he's skiing.
+
+ Links
+
+https://youtu.be/cFEVg0-K-Yg
+https://worldofspectrum.org/archive/software/games/horace-goes-skiing-sinclair-research-ltd

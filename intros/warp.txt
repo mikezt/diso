@@ -1,0 +1,128 @@
+===============================================================================
+                         Z X   R O T O Z O O M E R
+                         1K Intro for  ZX Spectrum
+===============================================================================
+
+                    Forever XXIV Demoparty (2026)
+                    1K Intro Competition Entry
+
+-------------------------------------------------------------------------------
+ CREDITS
+-------------------------------------------------------------------------------
+
+ Idea & Programming:    Shrek/MB Maniax
+
+-------------------------------------------------------------------------------
+ REQUIREMENTS
+-------------------------------------------------------------------------------
+
+ Platform:              ZX Spectrum 48K
+ Size:                  1005 bytes (1K)
+
+-------------------------------------------------------------------------------
+ DESCRIPTION
+-------------------------------------------------------------------------------
+
+ This 1K intro features two visual effects:
+
+ PART 1 - WAVING FLAG (Intro)
+ 
+ The "ZX" logo with rainbow background waves like a flag in the wind.
+ Each row and column is displaced using sine-wave offsets, creating
+ a 2D rubber-sheet deformation effect. The wave speed gradually
+ increases during the intro sequence.
+
+ PART 2 - ROTOZOOMER (Main Effect)
+ 
+ Classic rotozoomer effect with smooth rotation and zoom pulsation.
+ The texture rotates and zooms in/out continuously, creating a
+ hypnotic visual effect.
+
+-------------------------------------------------------------------------------
+ TECHNICAL DETAILS
+-------------------------------------------------------------------------------
+
+ ROTOZOOMER ALGORITHM:
+ 
+ The rotozoomer uses 8.8 fixed-point math for texture mapping.
+ For each screen pixel (x,y), we calculate texture coordinates (u,v):
+ 
+   u = startU + x*dUx + y*dUy
+   v = startV + x*dVx + y*dVy
+ 
+ Where:
+   dUx =  cos(angle) * zoom / 128
+   dVx =  sin(angle) * zoom / 128
+   dUy = -sin(angle) * zoom / 128  (perpendicular)
+   dVy =  cos(angle) * zoom / 128
+ 
+ The angle changes smoothly using sine-modulated speed (accelerates
+ and decelerates). Zoom pulsates using another sine wave.
+
+ SINE TABLE:
+ 
+ Only first quadrant (64 values) is stored in ROM. The remaining
+ 192 values are generated at runtime using symmetry:
+   - Q2 (64-127):  mirror of Q1
+   - Q3 (128-191): negation of Q1
+   - Q4 (192-255): negation of Q2
+
+ TEXTURE:
+ 
+ 32x32 attribute texture generated at runtime:
+   - Rainbow diagonal stripes (Red, Yellow, Green, Blue)
+   - "Z" letter in white (bright)
+   - "X" letter in black
+ 
+ Letters are defined as compact data (Y, X, length triplets).
+
+ WAVING FLAG:
+ 
+ Pre-calculated offset tables for X (24 values) and Y (32 values)
+ axes. Each offset = sin(coordinate * 4 + phase) / 32, giving
+ smooth +-3 pixel displacement. Phase increases each frame.
+
+ SOUND:
+ 
+ AY-3-8910 white noise generator creates ambient wind-like sound.
+ Noise period set to 31 for deep rumble, volume kept low (3/15).
+
+ MEMORY OPTIMIZATION:
+ 
+ All runtime variables (sin table, texture, offsets) use EQU
+ addresses beyond the binary - they exist only in RAM, not in
+ the 1K binary file.
+
+-------------------------------------------------------------------------------
+ SIZE BREAKDOWN (approximate)
+-------------------------------------------------------------------------------
+
+ Screen clear & init:        ~30 bytes
+ Sine table generator:       ~50 bytes
+ Sine Q1 data:                64 bytes
+ Texture generator:          ~80 bytes
+ Letter data (Z + X):        ~90 bytes
+ Wave effect (intro):       ~150 bytes
+ Rotozoomer:                ~300 bytes
+ Math routines:             ~100 bytes
+ AY sound init:              ~40 bytes
+ Main loop & control:        ~50 bytes
+ Misc:                       ~70 bytes
+ -----------------------------------------
+ TOTAL:                    ~1024 bytes
+
+-------------------------------------------------------------------------------
+ CONTROLS
+-------------------------------------------------------------------------------
+
+ SPACE - Exit to BASIC (in Rotazoomer part)
+
+-------------------------------------------------------------------------------
+ GREETINGS
+-------------------------------------------------------------------------------
+
+ Greetings fly to all ZX Spectrum sceners and Forever party visitors!
+
+===============================================================================
+                          (c) 2026 Shrek / MB Maniax
+===============================================================================

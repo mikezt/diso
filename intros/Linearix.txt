@@ -1,0 +1,29 @@
+::::::::::::::::::::::::::::::::::::::::::::::
+:: Linearix :: 1k intro for ZX Spectrum 128 ::
+::::::::::::::::::::::::::::::::::::::::::::::
+
+             Idea: Noro
+             Code: Busy
+            Music: Noro
+
+   Original music: Arpegiator
+       From album: Concerts in China
+      Composed by: Jean Michel Jarre
+
+     Requirements: ZX Spectrum 128k
+
+ Intro can be executed on 48k+AY sound chip
+ but in this case, only the music will play.
+
+ Intro does not change border and attributes
+ so you can enter BORDER 0 : PAPER 0 : INK 7
+ before executing intro to get invert colors.
+
+   Intro is packed by using LzmPack
+
+     Unpacked length .. 1115 bytes
+       Packed length ... 988 bytes
+        Lzm depacker .... 26 bytes
+           Init code ..... 8 bytes
+        --------------------------
+        Total length .. 1022 bytes
